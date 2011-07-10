@@ -1,0 +1,12 @@
+----------
+2011-7-10:
+
+Started a configure process; however, it appears that a
+root-permission make install will be needed, so hold off
+for now, will probably need to change.
+
+Tried to do a simple call to a function in libgsl in the
+way that worked in NQR.  Ran into thunk trouble.  Comments
+provided in src/GSL/SCRATCH from plobsing and bubaflub, some
+stuff I really need to look at before going much further.
+
