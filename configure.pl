@@ -7,8 +7,10 @@ print "Copyright (C) 2011, John W. Emerson\n\n";
 
 # If a computer already has GSL, why not just use that?
 
+# Where should I put libgsl.so?
+
 print "Checking for installed GSL... ";
-$hasgsl = `ldconfig -p | grep libgsl.so.0`;
+$hasgsl = `ldconfig -p | grep libgsl.soX`;    # needs fixing up.
 if ($hasgsl eq "") {
   print "none found, ok\n";
   print "Building GSL locally:\n";
@@ -26,10 +28,13 @@ if ($hasgsl eq "") {
   print "    ... this will take a few minutes... ";
   $makeres = `make`;
   print "ok\n";
+  print "  * Copying the shared object file...\n";
+  $cpres = system("cp .libs/libgsl.so ..");
+  print "ok\n";
   chdir('..');
   use Cwd;
   $rootdir = cwd();
-  $glsparrotflag = "-L\"$rootdir/$gsldir\"";
+  $glsparrotflag = "-LDOTHISTO.so"; #"-L\"$rootdir/$gsldir\"";
   print "Set special flag for parrot build: $glsparrotflag ... ok\n";
 } else {
   print "found system installation, ok\n";
@@ -37,6 +42,7 @@ if ($hasgsl eq "") {
   print "No special flag needed for GSL build... ok\n";
 }
 
+print "WARNING: need libgsl.so (possibly as a link, even in the system place.\n";
 
 #print "Checking src/ for *.pir...";
 #$pirfiles = `ls src/*.pir`;
