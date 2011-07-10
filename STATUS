@@ -10,3 +10,5 @@ way that worked in NQR.  Ran into thunk trouble.  Comments
 provided in src/GSL/SCRATCH from plobsing and bubaflub, some
 stuff I really need to look at before going much further.
 
+Tried a simpler function call: SUCCESS!  So it really is that
+'thunk' problem.  Progress.

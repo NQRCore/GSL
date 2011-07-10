@@ -62,6 +62,11 @@ https://github.com/bubaflub/parrot-gmp/blob/master/src/GMP/raw.pir
 plobsing: while you're here - is there an example of somewhere that uses parrot_nci_thunk_gen and loads in those libraries?
 <bubaflub> s/libraries/thunks/g
 
+/usr/local/bin/parrot_nci_thunk_gen
+config/gen/makefile/root.in  # line 2970
+
+jay: what i understand is that you have a slightly different NCI definition file that contains all your signatures that you'll want.  parrot_nci_thunk_gen turns that nci file into a C file.  compile that C file into a library and then load it when you need it.
+
 and see opengl bindings?
 so you'll likely want to look at runtime/parrot/library/OpenGL.pir, and sections of Parrot's makefile concerning 'glut_nci_thunks'
 
