@@ -21,7 +21,7 @@ To obtain GSL directly from its repository:
 
 Once you have a copy of GSL, build and test it as follows:
 
-    $ ./configure.pl
+    $ ./configure.pl           # WILL CHANGE.  Needs make install of gsl
     $ parrot setup.pir
     $ parrot setup.pir test
 
