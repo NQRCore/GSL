@@ -1,0 +1,6 @@
+gsl-*/
+gsl.c
+gsl.o
+gsl.pbc
+installable_gsl
+src/gen*.pir
