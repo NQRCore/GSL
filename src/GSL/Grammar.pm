@@ -32,6 +32,7 @@ proto token statement_control { <...> }
 rule statement_control:sym<say>   { <sym> [ <EXPR> ] ** ','  }
 rule statement_control:sym<print> { <sym> [ <EXPR> ] ** ','  }
 rule statement_control:sym<test> { <sym> [ <EXPR> ] ** ','  }
+rule statement_control:sym<test2> { <sym> [ <EXPR> ] ** ','  }
 
 ## Terms
 

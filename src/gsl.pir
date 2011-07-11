@@ -38,10 +38,10 @@ object.
     parrotns.'export_to'(hllns, imports)
 
 # NEW ATTEMPT?  Maybe needs libffi?
-    .local pmc lib, nci
-    loadlib lib, 'libgsl.so'
-    dlfunc nci, lib, '__gsl_ran_ugaussian_pdf', 'pp'
-    set_global ['GSL'], '__gsl_ran_ugaussian_pdf', nci
+#    .local pmc lib, nci
+#    loadlib lib, 'libgsl.so'
+#    dlfunc nci, lib, '__gsl_ran_ugaussian_pdf', 'pp'
+#    set_global ['GSL'], '__gsl_ran_ugaussian_pdf', nci
 .end
 
 .include 'src/gen_grammar.pir'

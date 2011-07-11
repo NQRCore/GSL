@@ -32,6 +32,12 @@ method statement_control:sym<test>($/) {
     make $past;
 }
 
+method statement_control:sym<test2>($/) {
+    my $past := PAST::Op.new( :name<test2>, :pasttype<call>, :node($/) );
+    for $<EXPR> { $past.push( $_.ast ); }
+    make $past;
+}
+
 method term:sym<integer>($/) { make $<integer>.ast; }
 method term:sym<quote>($/) { make $<quote>.ast; }
 
