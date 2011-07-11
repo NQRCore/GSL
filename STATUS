@@ -11,4 +11,11 @@ provided in src/GSL/SCRATCH from plobsing and bubaflub, some
 stuff I really need to look at before going much further.
 
 Tried a simpler function call: SUCCESS!  So it really is that
-'thunk' problem.  Progress.
+'thunk' problem.  Progress.  Next up:
+
+https://github.com/letolabs/parrot-libgit2/blob/master/src/git2.pir
+https://github.com/letolabs/parrot-libgit2/blob/master/src/git2.nci
+using the script
+... tools/dev/ncidef2pir.pl
+and bin/header2nci.pl (copied from letolabs)
+
