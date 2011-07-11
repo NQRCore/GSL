@@ -1,4 +1,85 @@
 
+Suppose you have a C library and the associate shared object file,
+such as libRmath.so from the R Project (www.r-project.org).  The
+library contains a bunch of useful functions, one being rexp() for
+generating a pseudo-random value from the exponential distribution.
+It takes and returns a double.
+
+If you are building a HLL and want to use rexp(), you can do
+something like this in Runtime.pm:
+
+sub rexp(*@args) {
+    return Q:PIR {
+        .local num arg, ans
+        $P0 = find_lex '@args'
+        arg = $P0[0]
+        .local pmc libRmath, rexp
+        libRmath = loadlib 'libRmath'
+        if libRmath goto HAVELIBRARY
+        say 'Could not load the libRmath library'
+      HAVELIBRARY:
+        rexp = dlfunc libRmath, 'rexp', 'dd'
+        ans = rexp(arg)
+        %r = box ans
+    };
+}
+
+For this to work, your libRmath.so file will need to be found
+in a reasonable place (perhaps because you set your LD_LIBRARY_PATH
+environment variable).
+
+Of course, there are many similar functions the library you would
+like to use, which brings up several issues:
+
+(1) It seems inefficient to have to use loadlib repeatedly; can this
+be done once at runtime?
+
+(2) It seems inefficient to have to call dlfunc every time rexp() is
+used; can this be done once at runtime?
+
+(3) This function has a simple signature receiving and returning a
+double. A more complex function could very likely fail to run, or
+even build, with a message complaining about the 'thunk' -- essentially
+not finding a match for the more complicated signature (not all
+signatures are automatically supported).
+
+(4) It would be nice to have a simpler version of the example in 
+completely in NQP instead of PIR.
+
+There seem to be two directions addressing some or all of these
+issues.  First, libffi can be used to sort out unusual signatures.
+Second, the parrot_nci_thunk_gen utility can be used as part of a
+configuration (pre-build) process.  The former is probably a little
+easier, initially, while the latter may represent the 'best practices'
+solution.  We explore each, below.
+
+
+-- Using libffi?
+
+Can probably figure this out, check bubaflub's GMP and probably others.
+
+
+-- Using parrot_nci_thunk_gen and/or nci_thunk_gen.pir?
+
+Comments from bubaflub and plobsing seem too vague for me to attempt
+this at the moment, unless there is an example of someone actually
+doing this?  Everything in the parrot tree seems to be simply creating
+this utility, not using it in a helpful way?
+
+tools/dev/nci_thunk_gen.pir
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 Important stuff: function calls, nci
 
@@ -58,6 +139,7 @@ jay: in other news, GSL also has the same documentation format (textinfo) so the
 
 https://github.com/bubaflub/parrot-gmp/blob/master/src/GMP/raw.pir
 
+compilers/pct/src/PAST/Compiler.pir
 
 plobsing: while you're here - is there an example of somewhere that uses parrot_nci_thunk_gen and loads in those libraries?
 <bubaflub> s/libraries/thunks/g

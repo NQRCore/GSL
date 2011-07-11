@@ -31,6 +31,7 @@ sub test(*@args) {
     HAVELIBRARY:
     gsl_ran_ugaussian_pdf = dlfunc libgsl, "gsl_ran_ugaussian_pdf", "dd"
     ans = gsl_ran_ugaussian_pdf(xval)
+    #ans = __gsl_ran_ugaussian_pdf(xval)
     say "Hello, maybe succeeded!"
     say ans
     %r = box ans

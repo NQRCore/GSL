@@ -36,6 +36,12 @@ object.
     parrotns = get_root_namespace ['parrot']
     imports = split ' ', 'PAST PCT HLL Regex Hash'
     parrotns.'export_to'(hllns, imports)
+
+# NEW ATTEMPT?  Maybe needs libffi?
+    .local pmc lib, nci
+    loadlib lib, 'libgsl.so'
+    dlfunc nci, lib, '__gsl_ran_ugaussian_pdf', 'pp'
+    set_global ['GSL'], '__gsl_ran_ugaussian_pdf', nci
 .end
 
 .include 'src/gen_grammar.pir'
