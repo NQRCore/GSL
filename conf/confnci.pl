@@ -3,11 +3,41 @@
 # Copyright (C) 2011, John W. Emerson
 
 $verbose = 0;
-
+system("cp gsl_stats.header gsl_stats.nci");
 $foo = `nm libgsl.so | grep gsl_stats`;
 @foo = split /\n/, $foo;
 
 if ($verbose) { print "$foo[0]\n$foo[1]\n$foo[2]\n\n"; }
+
+# /home/jay/parrot-master/parrot/docs/pdds/draft/pdd16_native_call.pod
+# /home/jay/parrot-master/parrot/src/nci/extra_thunks.nci
+
+$maptype{"int"} = "i";
+$maptype{"void"} = "v";
+$maptype{"double"} = "d";
+$maptype{"size_t"} = "i";
+$maptype{"short"} = "s";
+$maptype{"float"} = "f";
+$maptype{"char"} = "c";
+$maptype{"long"} = "l";
+$maptype{"unsigned int"} = "i";
+$maptype{"unsigned short"} = "s";
+$maptype{"unsigned long"} = "l";
+$maptype{"unsigned char"} = "c";
+$maptype{"long"} = "l";
+$maptype{"unsigned int *"} = "p";
+$maptype{"float *"} = "p";
+$maptype{"char *"} = "p";
+$maptype{"double *"} = "p";
+$maptype{"unsigned long *"} = "p";
+$maptype{"short *"} = "p";
+$maptype{"long *"} = "p";
+$maptype{"size_t *"} = "p";
+$maptype{"unsigned short *"} = "p";
+$maptype{"unsigned char *"} = "p";
+$maptype{"int *"} = "p";
+$maptype{"long double *"} = "p";
+
 
 foreach $i (0..(@foo-1)) { # No indent
 
@@ -37,7 +67,7 @@ foreach $this (@decl) {
 if ($verbose) { print "$decl\n\n"; }
 
 $ret = $decl;
-$ret =~ s/^(\w*) .*/\1/;
+$ret =~ s/^(.*)\s$func\s*\(.*/\1/;
 if ($verbose) { print "Return: $ret\n\n"; }
 $rettype{$ret} = 1;
 
@@ -49,6 +79,9 @@ $args =~ s/\s*const //g;
 if ($verbose) { print join(":", @args); }
 
 if ($verbose) { print "\n\nProcessing individual arguments now:\n"; }
+
+$final = "$maptype{$ret} $func ";
+
 foreach $arg (@args) {
   $pointer = 0;
   $_ = $arg;
@@ -65,9 +98,14 @@ foreach $arg (@args) {
   $arg =~ s/^\s*//;
   $arg =~ s/\s*$//;
   $argtype{$arg} = 1;
+  $final = $final.$maptype{$arg};
 }
 
+system("echo \'$final\' >> gsl_stats.nci");
+
   if ($verbose) { print "\n\n-----------------------------------\n\n"; }
+
+
 
 } # END OF LOOP (no indent)
 

@@ -1,0 +1,7 @@
+[package]
+GSL
+
+[lib]
+libgsl.so
+
+[defs]
