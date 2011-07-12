@@ -5,13 +5,27 @@
 print "Cleaning and building the GNU Scientific Library for Parrot VM.\n";
 print "Copyright (C) 2011, John W. Emerson\n\n";
 
-# If a computer already has GSL, why not just use that?
+# Assume GSL for now.  Eventually could do more, but not for now.
 
-# Where should I put libgsl.so?
+# CHeck for libffi and libffi-dev, see bubaflub's stuff.
 
 print "Checking for installed GSL... ";
-$hasgsl = `ldconfig -p | grep libgsl.soX`;    # needs fixing up.
+$hasgsl = `ldconfig -p | grep libgsl.so$`;    # needs fixing up.
 if ($hasgsl eq "") {
+  print "none found.  Please get, build, and install.\n";
+  die;
+} else {
+  print "ok\n";
+  print "libgsl.so location(s):\n";
+  print $hasgsl;
+  # Check LD_LIBRARY_PATH
+  print "Checking for libgsl.so location sanity...";
+
+}
+
+
+# Forget this.  Probably a bad idea, anyway.
+if ($hasgsl eq "XX") {
   print "none found, ok\n";
   print "Building GSL locally:\n";
   print "  * Unpacking GSL... ";
@@ -36,13 +50,14 @@ if ($hasgsl eq "") {
   $rootdir = cwd();
   $glsparrotflag = "-LDOTHISTO.so"; #"-L\"$rootdir/$gsldir\"";
   print "Set special flag for parrot build: $glsparrotflag ... ok\n";
-} else {
-  print "found system installation, ok\n";
-  $gslparrotflag = "";
-  print "No special flag needed for GSL build... ok\n";
-}
+} 
+#else {
+#  print "found system installation, ok\n";
+#  $gslparrotflag = "";
+#  print "No special flag needed for GSL build... ok\n";
+#}
 
-print "WARNING: need libgsl.so (possibly as a link, even in the system place.\n";
+#print "WARNING: need libgsl.so (possibly as a link, even in the system place.\n";
 
 #print "Checking src/ for *.pir...";
 #$pirfiles = `ls src/*.pir`;

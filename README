@@ -13,7 +13,8 @@ Jay Emerson (john.emerson@yale.edu or jayemerson@gmail.com)
 
 GSL requires Parrot (see http://www.parrot.org).  If you can
 build Parrot, you should be fine building GSL (which currently
-uses Parrot 3.3.0 as of July 10, 2011).
+uses Parrot 3.3.0 as of July 10, 2011).  You will need both
+libffi and libffi-dev installed.
 
 To obtain GSL directly from its repository:
 

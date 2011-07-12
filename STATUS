@@ -1,4 +1,21 @@
 ----------
+2011-7-12:
+
+Today I will be studying bubaflub's GMP project in greater detail.
+It might be smart to merge my signature information from yesterday
+with his framework, rather than re-inventing the wheel.  Use my
+signature information to get the nci file, then use the script
+to get the pir bindings.  Then build the infrastructure following
+the GMP example.
+
+----------
+2011-7-11:
+
+Started building a perl script to generate signatures from the
+output of nm and using the header files.  This would let me
+either write code or perhaps make use of ncidef2pir.
+
+----------
 2011-7-10:
 
 Started a configure process; however, it appears that a
