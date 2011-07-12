@@ -1,12 +1,13 @@
 ----------
 2011-7-12:
 
-Today I will be studying bubaflub's GMP project in greater detail.
-It might be smart to merge my signature information from yesterday
-with his framework, rather than re-inventing the wheel.  Use my
-signature information to get the nci file, then use the script
-to get the pir bindings.  Then build the infrastructure following
-the GMP example.
+Finished a script to generate the .nci file for the signatures in
+GSL statistics, with help from bubaflub in particular on the
+type codes.  This then easily produces the .pir file with the
+bindings.
+
+Next: study bubaflub's GMP project in greater detail.  I'm getting
+closer.
 
 ----------
 2011-7-11:
