@@ -20,11 +20,14 @@ To obtain GSL directly from its repository:
 
     $ git clone git://github.com/NQRCore/GSL.git
 
-Once you have a copy of GSL, build and test it as follows:
+The configuration and build process isn't there yet... I need to
+study bubaflub's GMP project pretty carefully.
 
-    $ ./configure.pl           # WILL CHANGE.  Needs make install of gsl
-    $ parrot setup.pir
-    $ parrot setup.pir test
+OLD: #Once you have a copy of GSL, build and test it as follows:
+#
+#    $ ./configure.pl           # WILL CHANGE.  Needs make install of gsl
+#    $ parrot setup.pir
+#    $ parrot setup.pir test
 
 I don't expect anyone will use this directly, but will rather
 link the functionality into their own projects via the native

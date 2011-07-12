@@ -56,7 +56,10 @@ solution.  We explore each, below.
 
 -- Using libffi?
 
-Can probably figure this out, check bubaflub's GMP and probably others.
+Upgrading my Parrot from 3.3.0, updating libffi, and installing
+libffi-dev got this working.  So the libffi approach seems to be
+easy enough, and then I should be able to replicate what bubaflub
+does with the GMP project, for example.
 
 
 -- Using parrot_nci_thunk_gen and/or nci_thunk_gen.pir?

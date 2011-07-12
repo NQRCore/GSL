@@ -1,0 +1,7 @@
+
+Adversing the project:
+On each github repo, go to: Admin -> Service Hooks -> Post-receive URLS : then add http://host04.appflux.net:5000/dalek?t=magnet,parrot
+
+docs/embed_new.pod
+
+
