@@ -1,7 +1,7 @@
 =head1 GSL - GNU Scientific Library for Parrot VM
 
-GSL is Copyright (C) by John W. Emerson
-See F<LICENSE> for licensing details.
+This GSL for Parrot is Copyright (C) by John W. Emerson
+See F<LICENSE> for licensing details, Artistic License 2.0.
 
 This is repository GSL in github organization NQRCore,
 established July 10, 2011.  GSL is the GNU Scientific
