@@ -1,6 +1,6 @@
-=head1 GSL - GNU Scientific Library
+=head1 GSL - GNU Scientific Library for Parrot VM
 
-GSL is Copyright (C) by John W. Emerson.
+GSL is Copyright (C) by John W. Emerson
 See F<LICENSE> for licensing details.
 
 This is repository GSL in github organization NQRCore,
@@ -12,22 +12,13 @@ Jay Emerson (john.emerson@yale.edu or jayemerson@gmail.com)
 =head2 Building from source
 
 GSL requires Parrot (see http://www.parrot.org).  If you can
-build Parrot, you should be fine building GSL (which currently
-uses Parrot 3.3.0 as of July 10, 2011).  You will need both
-libffi and libffi-dev installed.
+build Parrot, you should be fine building GSL.  You will also
+need both libffi and libffi-dev.  The configuration/building
+process is a work in progress (or not yet in progress).
 
 To obtain GSL directly from its repository:
 
     $ git clone git://github.com/NQRCore/GSL.git
-
-The configuration and build process isn't there yet... I need to
-study bubaflub's GMP project pretty carefully.
-
-OLD: #Once you have a copy of GSL, build and test it as follows:
-#
-#    $ ./configure.pl           # WILL CHANGE.  Needs make install of gsl
-#    $ parrot setup.pir
-#    $ parrot setup.pir test
 
 I don't expect anyone will use this directly, but will rather
 link the functionality into their own projects via the native
