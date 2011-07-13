@@ -15,7 +15,8 @@ if ($verbose) { print "$foo[0]\n$foo[1]\n$foo[2]\n\n"; }
 $maptype{"int"} = "i";
 $maptype{"void"} = "v";
 $maptype{"double"} = "d";
-$maptype{"size_t"} = "i";
+$maptype{"long double"} = "d"; # definte FLOATVAL "long double" in parrot?
+$maptype{"size_t"} = "l"; # Was i previously.
 $maptype{"short"} = "s";
 $maptype{"float"} = "f";
 $maptype{"char"} = "c";

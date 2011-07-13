@@ -4,4 +4,5 @@ On each github repo, go to: Admin -> Service Hooks -> Post-receive URLS : then a
 
 docs/embed_new.pod
 
-
+Figuring out INTVAL size (thanks, whiteknight):
+    parrot_config intvalsize
