@@ -1,4 +1,17 @@
 ----------
+2011-7-13:
+
+More progress in both GSL and NQR with the libraries, starting
+to understand how things work.  Considering Winxed now.
+Started to organize and update the configuration scripts more
+in line with bubaflub's stuff.
+
+I realize that once I sort through bubaflub's Winxed stuff
+I'll probably be very close to having the low-level bindings.
+Will then need more of the 'module' organization that I know
+he is working on, but I'm feeling good.  
+
+----------
 2011-7-12:
 
 Finished a script to generate the .nci file for the signatures in
